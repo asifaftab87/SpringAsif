@@ -3,6 +3,6 @@
 	<title>HOME JSP</title>
 </head>
 <body>
-	<h2>This is home.jsp</h2>
+	<h2>Merhaba</h2>
 </body>
 </html>
