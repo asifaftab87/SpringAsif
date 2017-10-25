@@ -44,7 +44,7 @@ public class HomeControllerTest {
 	List<Reader> expectedReaders = MethodUtil.createReaderList(20);
 	ReaderRepository mockRepository = mock(ReaderRepository.class);
 	when(mockRepository.findReader(Long.MAX_VALUE, 20)).thenReturn(expectedReaders);
-	ReaderController controller = new ReaderController();
+	ReaderController controller = new ReaderController(mockRepository);
 	
 	MockMvc mockMvc = standaloneSetup(controller).setSingleView(new InternalResourceView("/WEB-INF/views/readers.jsp")).build();
 	mockMvc.perform(get("/reader")).andExpect(view().name("readers"))

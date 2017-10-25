@@ -5,7 +5,9 @@ import java.util.List;
 import org.asif.data.ReaderRepository;
 import org.asif.dto.Reader;
 import org.asif.util.MethodUtil;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ReaderRepositoryImpl implements ReaderRepository{
 
 	@Override
