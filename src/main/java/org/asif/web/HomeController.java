@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller																				//Declared to be a controller
+@RequestMapping({StringPool.FORWARD_SLASH, StringPool.FORWARD_SLASH + Constants.HOME})
 public class HomeController {
 
-	@RequestMapping(value=StringPool.FORWARD_SLASH, method=RequestMethod.GET)			//Handle GET request for
+	@RequestMapping(method=RequestMethod.GET)											//Handle GET request for
 	public String home(){
 		return Constants.HOME;															//View name is home
 	}
