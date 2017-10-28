@@ -24,10 +24,13 @@ public class MethodUtil {
 	
 	
 	public static List<Reader> getFullReaderList(){
+		/*
 		if(readerList!=null)
 			return readerList;
 		else
 			return null;
+		*/
+		return createReaderList(20);
 	}
 	
 	
