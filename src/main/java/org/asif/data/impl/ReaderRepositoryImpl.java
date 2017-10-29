@@ -28,4 +28,19 @@ public class ReaderRepositoryImpl implements ReaderRepository{
 		
 		return readerList;
 	}
+	
+	@Override
+	public Reader findOne(long id){
+		
+		List<Reader> readerList = MethodUtil.getFullReaderList();
+		
+		
+		for(Reader reader : readerList){
+			if(reader.getMessage().equalsIgnoreCase("Reader "+id)){
+				return reader;
+			}
+		}
+		
+		return null;
+	}
 }

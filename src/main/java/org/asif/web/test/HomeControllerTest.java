@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
+import java.util.Date;
 import java.util.List;
 
 import org.asif.data.ReaderRepository;
@@ -38,8 +39,6 @@ public class HomeControllerTest {
 	}
 	
 	
-	
-	@Test
 	public void shouldShowRecentSpittles() throws Exception {
 	List<Reader> expectedReaders = MethodUtil.createReaderList(20);
 	ReaderRepository mockRepository = mock(ReaderRepository.class);
@@ -51,5 +50,41 @@ public class HomeControllerTest {
 									 .andExpect(model().attributeExists("readerList"))
 									 .andExpect(model().attribute("readerList", hasItems(expectedReaders.toArray())));
 	
+	}
+	
+	
+	public void shouldShowPagedSpittles() throws Exception {
+		
+		List<Reader> expectedReaders = MethodUtil.createReaderList(50);
+		ReaderRepository mockRepository = mock(ReaderRepository.class);
+		
+		ReaderController controller = new ReaderController(mockRepository);
+		
+		when(mockRepository.findReader(238900, 50)).thenReturn(expectedReaders);
+		
+		MockMvc mockMvc = standaloneSetup(controller).setSingleView(new InternalResourceView("/WEB-INF/views/readers.jsp")).build();
+		
+		mockMvc.perform(get("/reader/reader-two?max=238900&count=50"))
+			   .andExpect(view().name("readers"))
+			   .andExpect(model().attributeExists("readerList"))
+			   .andExpect(model().attribute("readerList", hasItems(expectedReaders.toArray())));
+	}
+	
+	
+	@Test
+	public void testSpittle() throws Exception {
+	Reader expectedReader = new Reader("Hello", new Date());
+	
+	ReaderRepository mockRepository = mock(ReaderRepository.class);
+	
+	when(mockRepository.findOne(1)).thenReturn(expectedReader);
+	
+	ReaderController controller = new ReaderController(mockRepository);
+	
+	MockMvc mockMvc = standaloneSetup(controller).build();
+	mockMvc.perform(get("/reader/reader-three/1"))
+	.andExpect(view().name("readers"))
+	.andExpect(model().attributeExists("reader"))
+	.andExpect(model().attribute("reader", expectedReader));
 	}
 }
