@@ -83,7 +83,7 @@ public class HomeControllerTest {
 	
 	MockMvc mockMvc = standaloneSetup(controller).build();
 	mockMvc.perform(get("/reader/reader-three/1"))
-	.andExpect(view().name("readers"))
+	.andExpect(view().name("readers-one"))
 	.andExpect(model().attributeExists("reader"))
 	.andExpect(model().attribute("reader", expectedReader));
 	}

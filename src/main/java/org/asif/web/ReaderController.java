@@ -49,7 +49,7 @@ public class ReaderController {
 	public String thirdReader(@PathVariable("id") int id, Model model){
 		
 		model.addAttribute("reader", readerRepository.findOne(id));
-		return "readers";
+		return "readers-one";
 	}
 	
 	

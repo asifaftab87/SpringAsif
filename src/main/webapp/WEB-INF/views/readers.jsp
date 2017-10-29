@@ -3,7 +3,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="header.jsp" %>
 	
 	<h2>reader.jsp</h2>
 	<c:forEach items="${readerList}" var="reader" >

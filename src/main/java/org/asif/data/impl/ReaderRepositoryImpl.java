@@ -33,14 +33,15 @@ public class ReaderRepositoryImpl implements ReaderRepository{
 	public Reader findOne(long id){
 		
 		List<Reader> readerList = MethodUtil.getFullReaderList();
-		
+		Reader reader1 = null;
 		
 		for(Reader reader : readerList){
 			if(reader.getMessage().equalsIgnoreCase("Reader "+id)){
-				return reader;
+				System.out.println(reader.getMessage());
+				reader1 = reader;
 			}
 		}
 		
-		return null;
+		return reader1;
 	}
 }
