@@ -17,19 +17,20 @@ import org.asif.dto.Reader;
 import org.asif.util.MethodUtil;
 import org.asif.web.HomeController;
 import org.asif.web.ReaderController;
+import org.asif.web.RegistrationController;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.view.InternalResourceView;
 
 public class HomeControllerTest {
 
-	
+	//@Test
 	public void homeTestPage(){
 		HomeController controller = new HomeController();
 		assertEquals("home", controller.home());
 	}
 	
-	
+	//@Test
 	public void testHomePage() throws Exception{
 	
 		HomeController controller = new HomeController();
@@ -38,7 +39,7 @@ public class HomeControllerTest {
 			.andExpect(view().name("home"));							//expect jsp page name
 	}
 	
-	
+	//@Test
 	public void shouldShowRecentSpittles() throws Exception {
 	List<Reader> expectedReaders = MethodUtil.createReaderList(20);
 	ReaderRepository mockRepository = mock(ReaderRepository.class);
@@ -52,7 +53,7 @@ public class HomeControllerTest {
 	
 	}
 	
-	
+	//@Test
 	public void shouldShowPagedSpittles() throws Exception {
 		
 		List<Reader> expectedReaders = MethodUtil.createReaderList(50);
@@ -71,7 +72,7 @@ public class HomeControllerTest {
 	}
 	
 	
-	@Test
+	//@Test
 	public void testSpittle() throws Exception {
 	Reader expectedReader = new Reader("Hello", new Date());
 	
@@ -87,4 +88,14 @@ public class HomeControllerTest {
 	.andExpect(model().attributeExists("reader"))
 	.andExpect(model().attribute("reader", expectedReader));
 	}
+	
+	@Test
+	public void shouldShowRegistration() throws Exception {
+		RegistrationController controller = new RegistrationController();
+		MockMvc mockMvc = standaloneSetup(controller).build();
+		mockMvc.perform(get("/user/register")).andExpect(view().name("register-form"));
+	}
+	
+	
+	
 }
