@@ -9,4 +9,6 @@ public interface ReaderRepository {
 	List<Reader> findReader(long max, int count);
 	
 	Reader findOne(long id);
+	
+	Reader save(Reader reader);
 }

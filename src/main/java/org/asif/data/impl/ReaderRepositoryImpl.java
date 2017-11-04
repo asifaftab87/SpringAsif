@@ -10,6 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReaderRepositoryImpl implements ReaderRepository{
 
+	
+	@Override
+	public Reader save(Reader reader){
+		return reader;
+	}
+	
 	@Override
 	public List<Reader> findReader(long max, int count){
 		

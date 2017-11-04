@@ -7,11 +7,17 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Reader {
 
-	private final Long id;
-	private final String message;
-	private final Date time;
+	private Long id;
+	private String message;
+	private Date time;
 	private Double latitude;
 	private Double longitude;
+	private String userName;
+	private String firstName;
+	private String lastName;
+	private String password;
+	
+	public Reader(){}
 	
 	public Reader(Long id, String message, Date time) {
 		this.id = id;
@@ -67,6 +73,50 @@ public class Reader {
 	@Override
 	public int hashCode() {
 		return HashCodeBuilder.reflectionHashCode(this, "id", "time");
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }
