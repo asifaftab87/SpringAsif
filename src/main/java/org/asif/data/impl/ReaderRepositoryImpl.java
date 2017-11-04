@@ -11,6 +11,16 @@ import org.springframework.stereotype.Component;
 public class ReaderRepositoryImpl implements ReaderRepository{
 
 	
+	//storing hard coded values, once db done will read values from db
+	@Override
+	public Reader findByName(String name){
+		Reader reader = new Reader();
+		reader.setUserName("asif aftab");
+		reader.setFirstName("md");
+		reader.setLastName("alam");
+		return reader;
+	}
+	
 	@Override
 	public Reader save(Reader reader){
 		return reader;

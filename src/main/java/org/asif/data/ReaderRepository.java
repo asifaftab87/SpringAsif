@@ -11,4 +11,6 @@ public interface ReaderRepository {
 	Reader findOne(long id);
 	
 	Reader save(Reader reader);
+	
+	Reader findByName(String name);
 }

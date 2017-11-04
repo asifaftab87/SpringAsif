@@ -2,6 +2,9 @@ package org.asif.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -12,9 +15,21 @@ public class Reader {
 	private Date time;
 	private Double latitude;
 	private Double longitude;
+	
+	@NotNull
+	@Size(min=5, max=5)
 	private String userName;
+	
+	@NotNull
+	@Size(min=5, max=7)
 	private String firstName;
+	
+	@NotNull
+	@Size(min=5, max=7)
 	private String lastName;
+
+	@NotNull
+	@Size(min=5, max=4)
 	private String password;
 	
 	public Reader(){}
