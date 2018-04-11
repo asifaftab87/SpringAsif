@@ -15,4 +15,19 @@ public class HomeController {
 		return Constants.HOME;															//View name is home
 	}
 	
+	
+	@RequestMapping(value="/register", method=RequestMethod.GET)
+	public String showRegistrationForm(){
+		
+		
+		return "registration-form";
+	}
+	
+	@RequestMapping(value="/register", method=RequestMethod.POST)
+	public String showRegistrationForm1(){
+		
+		
+		return "registration-form";
+	}
+	
 }

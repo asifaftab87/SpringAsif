@@ -71,7 +71,7 @@ public class HomeControllerTest {
 	}
 	
 	
-	@Test
+	//@Test
 	public void testSpittle() throws Exception {
 	Reader expectedReader = new Reader("Hello", new Date());
 	
@@ -87,4 +87,13 @@ public class HomeControllerTest {
 	.andExpect(model().attributeExists("reader"))
 	.andExpect(model().attribute("reader", expectedReader));
 	}
+	
+	@Test
+	public void shouldShowRegistration() throws Exception {
+		HomeController controller = new HomeController();
+		MockMvc mockMvc = standaloneSetup(controller).build();
+		mockMvc.perform(get("/register")).andExpect(view().name("registration-form"));
+	}
+	
+	
 }
